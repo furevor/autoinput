@@ -1,0 +1,9 @@
+<form (ngSubmit)="forward()">
+    <div class="form__col-value">
+        <div class="field__row">
+            <div class="field__col-9 field__sd-col-10 field__l-col-11 field__t-col-12 field__p-col-6 field__sp-col-12">
+                <app-select [options$]="operators$" [formControl]="operatorControl"></app-select>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,37 @@
+<div
+    class="mts-input-wrapper"
+    [class.mts-input-autocomplete-opened]="trigger?.panelOpen"
+    [class.mts-input-touched]="controlTouched"
+    [class.mts-input-manual-panel]="manualPanelControl"
+    [class.mts-input-cleanable]="cleanable"
+    [class.mts-input-invalid]="invalid"
+    [ngClass]="customiseClasses"
+>
+    <input
+        *ngIf="matAutocomplete; else simpleInput"
+        [(ngModel)]="value"
+        #inputWithAutocomplete
+        [matAutocomplete]="matAutocomplete"
+        [matAutocompleteDisabled]="autocompleteDisabled"
+        [attr.type]="inputType || 'text'"
+        [attr.placeholder]="placeholder"
+        [attr.maxLength]="maxTermLength"
+        (focus)="inputFocusEmit($event)"
+        (focusout)="inputFocusOutEmit($event)"
+        autocomplete="off"
+    />
+    <ng-template #simpleInput>
+        <input
+            [(ngModel)]="value"
+            [attr.type]="inputType || 'text'"
+            [attr.placeholder]="placeholder"
+            [attr.maxLength]="maxTermLength"
+            (focus)="inputFocusEmit($event)"
+            (focusout)="inputFocusOutEmit($event)"
+            autocomplete="off"
+        />
+    </ng-template>
+    <div *ngIf="cleanable" (mousedown)="clearInput($event)" class="mts-input-clear"></div>
+    <div *ngIf="manualPanelControl && !autocompletePanelOpened" (mousedown)="openAutocompletePanel($event)" class="mts-input-autocomplete-open"></div>
+    <div *ngIf="manualPanelControl && autocompletePanelOpened" (mousedown)="closeAutocompletePanel($event)" class="mts-input-autocomplete-close"></div>
+</div>

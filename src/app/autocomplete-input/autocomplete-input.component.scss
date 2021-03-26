@@ -1,0 +1,7 @@
+::ng-deep {
+    .mat-autocomplete-panel {
+        .ng-scroll-content {
+            max-width: 100% !important;
+        }
+    }
+}

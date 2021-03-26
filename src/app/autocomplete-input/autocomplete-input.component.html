@@ -1,0 +1,24 @@
+<mts-input
+    #mtsInput
+    [(ngModel)]="value"
+    [matAutocomplete]="autoComplete"
+    [cleanable]="cleanable"
+    [inputType]="inputType"
+    [placeholder]="placeholder"
+    [maxTermLength]="maxTermLength"
+    [manualPanelControl]="manualPanelControl"
+    (inputFocus)="inputFocusEmit($event)"
+    (inputFocusOut)="inputFocusOutEmit($event)"
+    (keyup.arrowup)="scrollToCurrentItem($event)"
+    [invalidInput]="invalid"
+    [autocompletePanelOpened]="autoComplete.isOpen"
+    (keyup.arrowdown)="scrollToCurrentItem($event)"
+>
+</mts-input>
+<mat-autocomplete #autoComplete="matAutocomplete" (optionSelected)="optionSelectedEmit($event)" (opened)="panelOpened()" (closed)="panelClosed()" [displayWith]="bindLabelFunction">
+    <ng-scrollbar #scrollBar>
+        <mat-option *ngFor="let option of options$ | async" [value]="option">
+            {{ bindLabelFunction(option) }}
+        </mat-option>
+    </ng-scrollbar>
+</mat-autocomplete>

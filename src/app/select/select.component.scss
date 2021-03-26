@@ -1,0 +1,21 @@
+﻿::ng-deep {
+    .mts-select {
+        &-wrapper {
+            position: relative;
+
+            .mts-input-wrapper {
+                background-color: unset;
+            }
+        }
+
+        &-value {
+            position: absolute;
+            height: 100%;
+            box-sizing: border-box;
+            width: 100%;
+            padding-top: 11px;
+            padding-left: 10px;
+            text-overflow: ellipsis;
+        }
+    }
+}

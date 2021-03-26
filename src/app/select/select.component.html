@@ -1,0 +1,15 @@
+﻿<div class="mts-select-wrapper">
+    <div *ngIf="!autocomplete.value" class="mts-select-value">{{ selectedOptionLabel }}</div>
+    <app-autocomplete-input
+        #autocomplete
+        (click)="openPanel()"
+        [manualPanelControl]="true"
+        [bindLabelFunction]="bindLabelFunction"
+        [formControl]="autocompleteControl"
+        (optionSelected)="optionSelected($event)"
+        (inputFocusOut)="focusOutEmit($event)"
+        [options$]="filteredOptions$"
+        [invalidInput]="invalid"
+        [placeholder]="placeholder"
+    ></app-autocomplete-input>
+</div>
