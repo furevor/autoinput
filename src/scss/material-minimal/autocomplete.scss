@@ -28,9 +28,10 @@
     pointer-events: auto;
     box-sizing: border-box;
     z-index: 1000;
+    height: 352px;
     display: flex;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 352px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -38,6 +39,7 @@
     background: $white;
     border-radius: 8px;
     max-height: 352px;
+    height: 100%;
 }
 .mat-autocomplete-panel:not([class*='mat-elevation-z']) {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 12px 20px rgba(0, 0, 0, 0.14);
