@@ -13,10 +13,10 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { MatAutocomplete, MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { InputTypeModel } from '../../models';
+import { InputTypeModel } from '../autocomplete-input/autocomplete-input.component';
 
 @Component({
-    selector: 'mts-input',
+    selector: 'app-input',
     templateUrl: './input.component.html',
     styleUrls: ['./input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,7 +24,7 @@ import { InputTypeModel } from '../../models';
 export class InputComponent implements ControlValueAccessor, OnChanges, OnInit {
     @Output() public inputFocus = new EventEmitter<FocusEvent>();
     @Output() public inputFocusOut = new EventEmitter<FocusEvent>();
-    @Input() public placeholder = '';
+    @Input() public placeholder: string | undefined = '';
     @Input() public autocompletePosition = 'auto';
     @Input() public maxTermLength?: number;
     @Input() public matAutocomplete?: MatAutocomplete;
@@ -32,17 +32,18 @@ export class InputComponent implements ControlValueAccessor, OnChanges, OnInit {
     @Input() public cleanable?: boolean;
     @Input() public autocompleteDisabled?: boolean;
     @Input() public manualPanelControl?: boolean;
-    @Input() public invalidInput?: boolean;
-    @Input() public autocompletePanelOpened: boolean;
+    @Input() public invalidInput?: boolean | undefined | null;
+    @Input() public autocompletePanelOpened!: boolean;
 
-    @ViewChild(MatAutocompleteTrigger, { static: false }) public trigger: MatAutocompleteTrigger;
-    @ViewChild('inputWithAutocomplete', { static: false }) public inputWithAutocomplete: ElementRef;
+    @ViewChild(MatAutocompleteTrigger, { static: false }) public trigger!: MatAutocompleteTrigger;
+    @ViewChild('inputWithAutocomplete', { static: false }) public inputWithAutocomplete!: ElementRef;
 
-    public customiseClasses: { [key: string]: boolean };
-    public controlTouched: boolean;
-    private onChange: (string) => string;
-    private onTouched: () => void;
-    private _value: string;
+    public customiseClasses!: { [key: string]: boolean };
+    public controlTouched!: boolean;
+    private onChange!: (arg0: string) => string;
+    private onTouched!: () => void;
+    // tslint:disable-next-line:variable-name
+    private _value!: string;
 
     public get value(): string {
         return this._value;
@@ -74,7 +75,7 @@ export class InputComponent implements ControlValueAccessor, OnChanges, OnInit {
         this.cdr.markForCheck();
     }
 
-    public registerOnChange(fn: (string) => string): void {
+    public registerOnChange(fn: (arg0: string) => string): void {
         this.onChange = fn;
     }
 
@@ -123,7 +124,7 @@ export class InputComponent implements ControlValueAccessor, OnChanges, OnInit {
         this.trigger.closePanel();
     }
 
-    public get invalid(): boolean {
+    public get invalid(): boolean | undefined | null {
         return this.control ? this.control.invalid || this.invalidInput : false;
     }
 

@@ -13,21 +13,22 @@ import { tap } from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent implements ControlValueAccessor, OnInit {
-    @Input() public options$!: Observable<unknown[]>;
+    @Input() public options$!: Observable<string[]>;
     @Input() public placeholder?: string;
-    @ViewChild('autocomplete', { static: false }) public autocomplete: AutocompleteInputComponent;
+    @ViewChild('autocomplete', { static: false }) public autocomplete!: AutocompleteInputComponent;
 
-    public filteredOptions$: Observable<unknown[]>;
+    public filteredOptions$!: Observable<string[]>;
     public autocompleteControl = new FormControl('');
-    public selectedOptionLabel: string;
+    public selectedOptionLabel!: string;
 
-    private _value: unknown;
+    // tslint:disable-next-line:variable-name
+    private _value!: string;
 
-    public get value(): unknown {
+    public get value(): string {
         return this._value;
     }
 
-    public set value(value: unknown) {
+    public set value(value: string) {
         console.log(`${value} - from setter`);
         this._value = value;
         if (this.onChange) {
@@ -35,14 +36,14 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
         }
     }
 
-    private onChange: (string) => string;
-    private onTouched: (string) => string;
+    private onChange!: (arg0: string) => string;
+    private onTouched!: (arg0: string) => string;
 
     constructor(public control: NgControl, private optionFilterService: OptionFilterService) {
         this.control.valueAccessor = this;
     }
 
-    @Input() public bindLabelFunction: (value: unknown) => string = (value: string) => {
+    @Input() public bindLabelFunction: (value: string) => string = (value: string) => {
         return value ? value : '';
     };
 
@@ -51,16 +52,16 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
             .getFilteredOptions(this.autocompleteControl.valueChanges, this.options$, this.bindLabelFunction)
             .pipe(
                 tap(() => {
-                    console.log(`This is our inner value ... ${this.control.control.value}`);
+                    console.log(`This is our inner value ... ${this.control?.control?.value}`);
                 }),
             );
     }
 
-    public registerOnChange(fn: (string) => string): void {
+    public registerOnChange(fn: (arg0: string) => string): void {
         this.onChange = fn;
     }
 
-    public registerOnTouched(fn: (string) => string): void {
+    public registerOnTouched(fn: (arg0: string) => string): void {
         this.onTouched = fn;
     }
 
@@ -87,7 +88,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
         this.autocompleteControl.setValue('');
     }
 
-    public get invalid(): boolean {
+    public get invalid(): boolean | null {
         return this.control ? this.control.invalid : false;
     }
 }

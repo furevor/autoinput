@@ -1,0 +1,161 @@
+﻿.fz {
+    &-h1 {
+        font-size: 50px;
+    }
+
+    &-h2 {
+        font-size: 39.6px;
+    }
+
+    &-h3 {
+        font-size: 30.8px;
+    }
+
+    &-h4 {
+        font-size: 24.2px;
+    }
+
+    &-norm {
+        font-size: 22px;
+    }
+
+    &-small {
+        font-size: 18.7px;
+    }
+
+    &-xsmall {
+        font-size: 16.5px;
+    }
+
+    &-fixed {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1599px) {
+    .fz {
+        &-h1 {
+            font-size: 50px;
+        }
+
+        &-h2 {
+            font-size: 36px;
+        }
+
+        &-h3 {
+            font-size: 28px;
+        }
+
+        &-h4 {
+            font-size: 22px;
+        }
+
+        &-norm {
+            font-size: 20px;
+        }
+
+        &-small {
+            font-size: 17px;
+        }
+
+        &-xsmall {
+            font-size: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .fz {
+        &-h1 {
+            font-size: 45px;
+        }
+
+        &-h2 {
+            font-size: 32.4px;
+        }
+
+        &-h3 {
+            font-size: 25.2px;
+        }
+
+        &-h4 {
+            font-size: 19.8px;
+        }
+
+        &-norm {
+            font-size: 18px;
+        }
+
+        &-small {
+            font-size: 15.3px;
+        }
+
+        &-xsmall {
+            font-size: 13.5px;
+        }
+    }
+}
+
+@media screen and (max-width: 959px) {
+    .fz {
+        &-h1 {
+            font-size: 45px;
+        }
+
+        &-h2 {
+            font-size: 32.4px;
+        }
+
+        &-h3 {
+            font-size: 25.2px;
+        }
+
+        &-h4 {
+            font-size: 19.8px;
+        }
+
+        &-norm {
+            font-size: 18px;
+        }
+
+        &-small {
+            font-size: 15.3px;
+        }
+
+        &-xsmall {
+            font-size: 13.5px;
+        }
+    }
+}
+
+@media screen and (max-width: 759px) {
+    .fz {
+        &-h1 {
+            font-size: 32px;
+        }
+
+        &-h2 {
+            font-size: 28.8px;
+        }
+
+        &-h3 {
+            font-size: 22.4px;
+        }
+
+        &-h4 {
+            font-size: 17.6px;
+        }
+
+        &-norm {
+            font-size: 16px;
+        }
+
+        &-small {
+            font-size: 13.6px;
+        }
+
+        &-xsmall {
+            font-size: 12px;
+        }
+    }
+}

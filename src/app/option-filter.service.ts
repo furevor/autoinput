@@ -2,17 +2,19 @@
 import { Observable } from 'rxjs';
 import { map, startWith, switchMap } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class OptionFilterService {
     public getFilteredOptions(
         filterTerm$: Observable<string>,
-        options$: Observable<unknown[]>,
-        bindLabelFunction: (value: unknown) => string,
-    ): Observable<unknown[]> {
+        options$: Observable<string[]>,
+        bindLabelFunction: (value: string) => string,
+    ): Observable<string[]> {
         return options$.pipe(
             switchMap(options =>
                 filterTerm$.pipe(
-                    // startWith(''),
+                    startWith(''),
                     map(filterTerm =>
                         options.filter(
                             option =>

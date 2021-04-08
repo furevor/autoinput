@@ -1,6 +1,6 @@
-﻿@import 'Styles/Stream/scss/screen-sizes';
-@import 'Styles/Stream/scss/colors';
-@import 'Styles/Stream/scss/mixins';
+﻿@import './src/scss/screen-sizes';
+@import './src/scss/colors';
+@import './src/scss/mixins';
 
 ::ng-deep.mts-input {
     &-touched {

@@ -1,0 +1,66 @@
+﻿$baseText: #333333;
+$black: #000000;
+$blackPearl: #1d2023;
+$red: #e30613;
+$lightRed: #e3061380;
+$darkRed: #cc061a;
+$white: #ffffff;
+$gray: #666666;
+$lightGray: #fafafa;
+$middleGray: #808080;
+$fadedGray: #cccccc;
+$darkGray: #999999;
+$lightYellow: #fff4bd;
+$hintBorder: #ededed;
+$navyBlue: #202d3d;
+$mercury: #ebebeb;
+$transparentBlack1: #00000014;
+$transparentBlack2: #0000001a;
+$lightBlue: #007cff;
+$brightGreen: #26cd58;
+$darkOrange: #f95721;
+$venetianRed: #e30611;
+
+// TODO: refactor gray colors
+$colorGray1: #f2f2f2;
+$colorGray2: #e6e6e6;
+$colorGray3: #adb4ba;
+$colorGray4: #adb0b3; // used 1 time
+$colorGray5: #adb8c1; // used 2 times
+$colorGray6: #e4e4e4; // used 3 times
+$colorGray7: #d8d8d8; // used 1 time
+$colorGray8: #f7f7f7; // used 1 time
+$colorGray9: #626c77; // used 5 time
+$colorGray10: #d7d9db; // used 1 time
+$colorGray11: #e2e5eb; // used 4 time
+$colorGray12: #f2f3f7; // used 4 time
+$colorGray13: #969fa8; // used 1 time
+$colorGray14: #dde1e7; // used 1 time
+
+.color-red {
+    color: $red;
+}
+
+.color-white {
+    color: $white;
+}
+
+.color-gray {
+    color: $gray;
+}
+
+.color-light-gray {
+    color: $lightGray;
+}
+
+.color-middle-gray {
+    color: $middleGray;
+}
+
+.color-dark-gray {
+    color: $darkGray;
+}
+
+.text-bold {
+    font-weight: 500;
+}

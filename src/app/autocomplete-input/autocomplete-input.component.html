@@ -1,4 +1,4 @@
-<mts-input
+<app-input
     #mtsInput
     [(ngModel)]="value"
     [matAutocomplete]="autoComplete"
@@ -14,7 +14,7 @@
     [autocompletePanelOpened]="autoComplete.isOpen"
     (keyup.arrowdown)="scrollToCurrentItem($event)"
 >
-</mts-input>
+</app-input>
 <mat-autocomplete #autoComplete="matAutocomplete" (optionSelected)="optionSelectedEmit($event)" (opened)="panelOpened()" (closed)="panelClosed()" [displayWith]="bindLabelFunction">
     <ng-scrollbar #scrollBar>
         <mat-option *ngFor="let option of options$ | async" [value]="option">

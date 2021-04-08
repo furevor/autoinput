@@ -32,27 +32,28 @@ export class AutocompleteInputComponent implements ControlValueAccessor, AfterVi
     @Input() public inputType?: InputTypeModel;
     @Input() public cleanable?: boolean;
     @Input() public autoActiveFirstOption?: boolean;
-    @Input() public options$!: Observable<unknown[]>;
+    @Input() public options$!: Observable<string[]>;
     @Input() public placeholder?: string;
     @Input() public autocompleteDisabled?: boolean;
     @Input() public manualPanelControl?: boolean;
-    @Input() public invalidInput?: boolean;
+    @Input() public invalidInput?: boolean | null;
 
-    @ViewChild('scrollBar', { static: false }) private scrollBar: NgScrollbar;
-    @ViewChild('mtsInput', { static: false }) private mtsInput: InputComponent;
-    @ViewChild('autoComplete', { static: false }) private autoComplete: MatAutocomplete;
+    @ViewChild('scrollBar', { static: false }) private scrollBar!: NgScrollbar;
+    @ViewChild('mtsInput', { static: false }) private mtsInput!: InputComponent;
+    @ViewChild('autoComplete', { static: false }) private autoComplete!: MatAutocomplete;
 
-    public focused: boolean;
+    public focused = false;
 
-    private onChange: (string) => string;
-    private onTouched: (string) => string;
-    private _value: string;
+    private onChange!: (arg0: string) => string;
+    private onTouched!: (arg0: string) => string;
+    // tslint:disable-next-line:variable-name
+    private _value!: string;
 
     constructor(private control: NgControl, private cdr: ChangeDetectorRef) {
         this.control.valueAccessor = this;
     }
 
-    @Input() public bindLabelFunction: (value: unknown) => string = (value: string) => {
+    @Input() public bindLabelFunction: (value: string) => string = (value: string) => {
         return value;
     };
 
@@ -77,15 +78,16 @@ export class AutocompleteInputComponent implements ControlValueAccessor, AfterVi
         this.cdr.markForCheck();
     }
 
-    public registerOnChange(fn: (string) => string): void {
+    public registerOnChange(fn: (arg0: string) => string): void {
         this.onChange = fn;
     }
 
-    public registerOnTouched(fn: (string) => string): void {
+    public registerOnTouched(fn: (arg0: string) => string): void {
         this.onTouched = fn;
     }
 
-    public scrollToCurrentItem(event: KeyboardEvent): void {
+    public scrollToCurrentItem(event: Event): void {
+        const { code } = event as KeyboardEvent;
         const {
             mtsInput: {
                 trigger: { activeOption },
@@ -112,7 +114,7 @@ export class AutocompleteInputComponent implements ControlValueAccessor, AfterVi
             const { top: scrollBarTop } = scrollBarRect;
             const maxViewedOptions = scrollBarElement.offsetHeight / activeOptionElement.offsetHeight;
 
-            switch (event.code) {
+            switch (code) {
                 case 'ArrowDown':
                     if (currentItemBottom > scrollBarBottom) {
                         this.scrollBar.scrollTo({
@@ -160,7 +162,7 @@ export class AutocompleteInputComponent implements ControlValueAccessor, AfterVi
         this.inputFocusOut.emit(event);
         const { relatedTarget = {} } = event || {};
         const { nodeName = '' } = (relatedTarget as HTMLElement) || {};
-        if (nodeName != 'MAT-OPTION') {
+        if (nodeName !== 'MAT-OPTION') {
             this.changePanelState(false);
         }
     }
@@ -177,7 +179,7 @@ export class AutocompleteInputComponent implements ControlValueAccessor, AfterVi
         this.mtsInput.panelClosed();
     }
 
-    public get invalid(): boolean {
+    public get invalid(): boolean | undefined | null {
         return this.control ? this.control.invalid || this.invalidInput : false;
     }
 }

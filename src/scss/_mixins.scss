@@ -1,0 +1,33 @@
+﻿@import 'variables';
+
+@mixin text-color($color) {
+    color: $color;
+}
+
+@mixin icon-number-selection($icon) {
+    background: url(#{$numberSelectionIcons}/#{$icon}) no-repeat;
+}
+
+@mixin promo-checkbox($icon) {
+    background: url(#{$promoCheckboxIcon}/#{$icon}) no-repeat;
+}
+
+@mixin progress-bar($icon) {
+    background: url(#{$progressBarIcons}/#{$icon});
+}
+
+@mixin promo-select($icon) {
+    background: url('#{$promoSelectIcon}/#{$icon}') no-repeat;
+}
+
+@mixin site-search-icon($icon) {
+    background: url(#{$searchSiteIcons}/#{$icon});
+}
+
+@mixin form-elements-icon($icon) {
+    background: url(#{$formElementsIcons}/#{$icon});
+}
+
+@mixin mnp-icon($icon) {
+    background: url(#{$mnpIcons}/#{$icon});
+}

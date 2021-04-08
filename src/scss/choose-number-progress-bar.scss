@@ -1,0 +1,41 @@
+﻿@import 'Styles/Stream/scss/screen-sizes';
+
+::ng-deep {
+    .section-passport__bar {
+        text-align: center;
+
+        .progress-bar {
+            width: 705px;
+
+            &-step-point-title {
+                font-size: 17px;
+                line-height: 24px;
+            }
+
+            @media screen and (max-width: $smallDesktopMaxScreen) {
+                width: 593px;
+
+                .tablet-unvisible {
+                    display: none;
+                }
+
+                .tablet-visible {
+                    display: block;
+                    margin: 10px auto 0;
+                    width: 134px;
+                }
+            }
+
+            @media screen and (max-width: $tabletMaxScreen) {
+                width: 472px;
+            }
+
+            @media screen and (max-width: $mobileMaxScreen) {
+                max-width: 335px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+            }
+        }
+    }
+}
